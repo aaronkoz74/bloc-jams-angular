@@ -7,15 +7,18 @@
         */
         var currentAlbum = Fixtures.getAlbum();
         /**
-        * @desc Buzz object audio file
+        * @desc Sets current Buzz object audio file to first song in album
         * @type {Object}
         */
-        var currentBuzzObject = null;
+        var currentBuzzObject = new buzz.sound(currentAlbum.songs[0].audioUrl, {
+                formats: ['mp3'],
+                preload: true
+            });
         
         /**
         * @function setSong
         * @desc Stops currently playing song and loads new audio file as currentBuzzObject
-        * @params {Object} song
+        * @param {Object} song
         */
         var setSong = function(song) {
             if (currentBuzzObject) {
@@ -34,7 +37,7 @@
         /**
         * @function playSong
         * @desc Plays currentBuzzObject and sets playing property of song object to true
-        * @params {Object} song
+        * @param {Object} song
         */
         var playSong = function(song) {
             if (currentBuzzObject) {
@@ -68,7 +71,7 @@
         * @desc Active song object from list of songs
         * @type {Object}
         */
-        SongPlayer.currentSong = null;
+        SongPlayer.currentSong = currentAlbum.songs[0];
         
         /**
         * @function play
@@ -84,6 +87,8 @@
                 if (currentBuzzObject.isPaused()) {
                     playSong(song);
                 }
+            } else {
+                playSong(song);
             }
         };
         
