@@ -83,13 +83,13 @@
         * @desc Current playback time (in seconds) of currently playing song
         * @type {Number}
         */
-        SongPlayer.currentTime = null;
+        SongPlayer.currentTime = 0;
         
         /**
-        * @desc Current playback volume of currently playing song
+        * @desc Set current playback volume to 60%
         * @type {Number}
         */
-        SongPlayer.volume = 80;
+        SongPlayer.volume = 60;
         
         /**
         * @function play
